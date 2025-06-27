@@ -78,7 +78,8 @@ function InterfaceAdmin() {
                 {products.map((product)=>(
                     <tr key={product.id}>
                         <th scope="row">{product.id}</th>
-                        <td scope="row">{product.name}</td>
+                        <td scope="row">
+                            <input type="text" value={product.name} /></td>
                         <td scope="row">{product.slug}</td>
                         <td scope="row">{product.brand}</td>
                         <td scope="row">{product.color}</td>

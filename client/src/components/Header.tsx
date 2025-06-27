@@ -12,6 +12,16 @@ function Header() {
     setIsOpen(prev=> !prev)
   }
 
+  const [loopBtn, setLoopBtn] = useState<boolean>(false)
+  const handleLoopBtn = () : void =>{
+    setLoopBtn(prev=>!prev)
+  }
+
+  const [search, setSearch] = useState<string>('')
+  const handleSearch =(e : React.ChangeEvent<HTMLInputElement>) : void =>{
+    setSearch(e.target.value)
+  }
+
   return (
     <header>
       <div className="header-row">
@@ -24,10 +34,13 @@ function Header() {
           <Link to='/signin'><SigninIcon /><span className="sign-in">Sign In</span></Link>
         </div>
 
-        <p className="title">LEƎD BEAUTY</p>
+        <p className="title">LEED BEAUTY</p>
 
         <div className="right-side">
-          <LoopIcon />
+          <button className="loop-button" onClick={handleLoopBtn}><LoopIcon /></button>
+          {loopBtn &&
+          <input type="text" name="search" className="loop-input" value={search} onChange={handleSearch} />
+          }
           <Link to={'/likes'}><HeartIcon className='likes' /></Link>
           <Link to={'/cart'}><Cart4LineDuotoneIcon /></Link>
         </div>

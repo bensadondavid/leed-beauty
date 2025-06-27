@@ -27,7 +27,7 @@ a{
 }
 
 .interface table th, .interface table td{
-    border: 1px solid #000;
+    border: 0.5px solid grey;
     width: fit-content;
     text-align: center;
 }
@@ -44,6 +44,7 @@ header{
 }
 
 .header-row{
+    position: relative;
     width: 100%;
     padding: 15px 0;
     display: flex;
@@ -79,6 +80,20 @@ hr{
     justify-content: center;
     align-items: center;
     gap: 10px;
+}
+
+.right-side .loop-button{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.right-side .loop-input{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 90vw;
+    height: 100%;
 }
 
 nav{
