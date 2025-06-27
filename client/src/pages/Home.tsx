@@ -1,5 +1,6 @@
 import Header from "../components/Header"
 import Footer from "../components/Footer"
+import Slider from "../components/Swiper"
 
 function Home() {
 
@@ -7,7 +8,7 @@ function Home() {
     <>
         <Header />
         <div className="home">
-
+          <Slider />
         </div>
         <Footer />
     </>

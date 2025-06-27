@@ -21,7 +21,7 @@ function Header() {
               <span className="top-bar"></span>
               <span className="bottom-bar"></span>
           </button>
-          <Link to='/signin'><SigninIcon />Sign In</Link>
+          <Link to='/signin'><SigninIcon /><span className="sign-in">Sign In</span></Link>
         </div>
 
         <p className="title">LEƎD BEAUTY</p>
@@ -34,25 +34,22 @@ function Header() {
 
       </div>
 
-      <hr style={{width : "100vw"}}/>
+      <hr/>
 
       <nav className={isOpen ? 'open' : ''}>
 
         <ul>
           <li>
-            <Link></Link>
+            <Link to='/products/face'>Face</Link>
           </li>
           <li>
-            <Link></Link>
+            <Link to='/products/eyes'>Eyes</Link>
           </li>
           <li>
-            <Link></Link>
+            <Link to='/products/lips'>Lips</Link>
           </li>
           <li>
-            <Link></Link>
-          </li>
-          <li>
-            <Link></Link>
+            <Link to='/products/countouring'>Countouring</Link>
           </li>
         </ul>
 

@@ -1,5 +1,5 @@
 
-export const SigninIcon = ({ size = 24, color = 'currentColor', ...props }) => (
+export const SigninIcon = ({ size = 20, color = 'currentColor', ...props }) => (
   <svg 
     xmlns="http://www.w3.org/2000/svg" 
     viewBox="0 0 2048 2048" 
