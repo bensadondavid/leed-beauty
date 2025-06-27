@@ -9,6 +9,29 @@ a{
     color: black;
 }
 
+/* Interface */
+
+.interface{
+    height: fit-content;
+    width: 100%;
+}
+
+.interface table{
+    width: 90%;
+    margin: auto;
+    height: fit-content;
+}
+
+.interface table caption{
+    margin: 20px auto;
+}
+
+.interface table th, .interface table td{
+    border: 1px solid #000;
+    width: fit-content;
+    text-align: center;
+}
+
 /* Header */
 
 header{
@@ -127,3 +150,4 @@ nav ul li:hover{
         transform: translateX(0);
     }
 }
+

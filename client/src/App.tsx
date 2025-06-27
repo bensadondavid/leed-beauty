@@ -5,6 +5,7 @@ import Fallback from "./components/Fallback"
 function App() {
  
   const Home = lazy(()=>import('./pages/Home'))
+  const InterfaceAdmin = lazy(()=>import('./pages/InterfaceAdmin'))
 
   return (
     <>
@@ -12,6 +13,7 @@ function App() {
         <Suspense fallback={<Fallback />}>
           <Routes>
             <Route path="/" element={<Home />}/>
+            <Route path="/interface" element={<InterfaceAdmin />}/>
           </Routes>
           </Suspense>
       </BrowserRouter>
