@@ -1,33 +1,34 @@
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { Link } from "react-router-dom"
 import { SigninIcon } from "../assets/signInIcon"
 import { LoopIcon } from "../assets/loopIcon"
 import { HeartIcon } from "../assets/heartIcon"
-import { Cart4LineDuotoneIcon } from "../assets/cartIcon"
+import { CartIcon } from "../assets/cartIcon"
 
 
 function Header() {
 
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [loopBtn, setLoopBtn] = useState<boolean>(false)
-  const [productsSearched, setProductsSearched] = useState([{id : 1, name : 'david'}, {id : 2, name : 'noa'}])
-  const timeRef = useRef(null)
-  const urlSearchProduct = import.meta.env.VITE_URL_FETCH_PRODUCTS
-
+  const [productsSearched, setProductsSearched] = useState([])
   const [search, setSearch] = useState<string>('')
-  const handleSearch = async(e : React.ChangeEvent<HTMLInputElement>) =>{
-    const value = e.target.value
-    setSearch(value)
+  const timeRef = useRef<NodeJS.Timeout | null>(null)
+  const abortRef = useRef<AbortController | null>(null)
+  const urlSearchProduct = import.meta.env.VITE_URL_FETCH_PRODUCTS || 'http://localhost:3000/products'
+
+  const handleSearch = async() =>{
     if(timeRef.current){
       clearTimeout(timeRef.current)
     }
     timeRef.current = setTimeout(async() => {
       try{
-        const response = await fetch(urlSearchProduct, {
-          method : 'POST',
-          headers : {'Content-Type' : 'application/json'},
-          body : JSON.stringify({ search : value })
-        })
+        if(abortRef.current){
+          abortRef.current.abort()
+        }
+        const controller = new AbortController()
+        abortRef.current = controller
+        const params = new URLSearchParams({ search })
+        const response = await fetch(`${urlSearchProduct}/search?${params.toString()}`, {signal : controller.signal})
         const data = await response.json()
         setProductsSearched(data.products)
     }
@@ -36,8 +37,42 @@ function Header() {
     }
     finally{
       timeRef.current = null
+      abortRef.current = null
     }
     }, 500);
+  }
+
+   useEffect(()=>{
+    if (search.trim().length === 0) {
+      setProductsSearched([])
+      // Abort any pending requests when search is cleared
+      if (abortRef.current) {
+        abortRef.current.abort();
+        abortRef.current = null;
+      }
+      if (timeRef.current) {
+        clearTimeout(timeRef.current);
+        timeRef.current = null;
+      }
+      return
+    }
+    handleSearch()
+
+    // Cleanup function: This runs when the component unmounts or before the effect re-runs
+    return () => {
+      if (timeRef.current) {
+        clearTimeout(timeRef.current);
+      }
+      if (abortRef.current) {
+        abortRef.current.abort(); // Abort any ongoing fetch request
+      }
+    };
+  },[search])
+
+  const handleCancel = ()=>{
+    setLoopBtn(prev=> !prev)
+    setSearch('')
+    setProductsSearched([])
   }
 
   return (
@@ -56,12 +91,12 @@ function Header() {
         <p className="title">LEED BEAUTY</p>
 
         <div className="right-side">
-          <button className="loop-button" onClick={()=>setLoopBtn(prev=>!prev)}><LoopIcon /></button>
+          <button className="loop-button" onClick={handleCancel}><LoopIcon /></button>
 
            <div className={`loop ${loopBtn ? 'open' : ''}`}>
             <div className="loop-first-row">
               <p>LEED BEAUTY</p>
-              <input type="text" name="search" value={search} onChange={handleSearch} placeholder="Search Products" />
+              <input type="text" name="search" value={search} onChange={(e)=>{setSearch(e.target.value)}} placeholder="Search Products" />
               <button onClick={()=>setLoopBtn(prev=>!prev)}>Cancel</button>
             </div>
             <div className="loop-scnd-row">
@@ -73,8 +108,8 @@ function Header() {
             </div>
           </div>
 
-          <Link to={'/likes'}><HeartIcon className='likes' /></Link>
-          <Link to={'/cart'}><Cart4LineDuotoneIcon /></Link>
+          <Link to={'/likes'} className='likes'><HeartIcon/></Link>
+          <Link to={'/cart'}><CartIcon /></Link>
         </div>
       </div>
       <nav className={isOpen ? 'open' : ''}>

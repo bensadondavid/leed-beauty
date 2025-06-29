@@ -1,13 +1,8 @@
 
-export const SigninIcon = ({ size = 20, color = 'currentColor', ...props }) => (
-  <svg 
-    xmlns="http://www.w3.org/2000/svg" 
-    viewBox="0 0 2048 2048" 
-    width={size} 
-    height={size} 
-    fill={color}
-    {...props}
-  >
-    <path xmlns="http://www.w3.org/2000/svg" fill="currentColor" d="M1728 1152q26 0 45 19t19 45q0 26-19 45t-45 19q-26 0-45-19t-19-45q0-26 19-45t45-19zm-603-19q-79-54-170-81t-187-28q-88 0-170 23t-153 64t-129 100t-100 130t-65 153t-23 170H0q0-117 35-229t101-207t157-169t203-113q-56-36-100-83t-76-103t-47-118t-17-130q0-106 40-199t109-163T568 40T768 0q106 0 199 40t163 109t110 163t40 200q0 67-16 129t-48 119t-75 103t-101 83q81 29 156 80l-71 107zM384 512q0 80 30 149t82 122t122 83t150 30q79 0 149-30t122-82t83-122t30-150q0-79-30-149t-82-122t-123-83t-149-30q-80 0-149 30t-122 82t-83 123t-30 149zm1280 384q79 0 149 30t122 82t83 123t30 149q0 80-30 149t-82 122t-123 83t-149 30q-65 0-128-23v151h-128v128h-128v128H896v-282l395-396q-11-46-11-90q0-79 30-149t82-122t122-83t150-30zm0 640q53 0 99-20t82-55t55-81t20-100q0-53-20-99t-55-82t-81-55t-100-20q-53 0-99 20t-82 55t-55 81t-20 100q0 35 9 64t21 61l-414 413v102h128v-128h128v-128h128v-91l93-92q40 23 77 39t86 16z"/>
-  </svg>
+export const SigninIcon = () => (
+  <svg role="img" aria-labelledby="signin" width="18" height="20" viewBox="0 0 18 20" fill="none">
+    <title id="signin">Sign in</title>
+    <path d="M8.96413 9.25839C11.2446 9.25839 13.0933 7.40969 13.0933 5.1292C13.0933 2.8487 11.2446 1 8.96413 1C6.68365 1 4.83496 2.8487 4.83496 5.1292C4.83496 7.40969 6.68365 9.25839 8.96413 9.25839Z" stroke="currentColor" strokeMiterlimit="10" strokeLinecap="round"></path>
+    <path d="M8.81499 11.1855H9.10922C13.4238 11.1855 16.9242 14.688 16.9242 19.0006H1C1 14.686 4.50244 11.1855 8.81499 11.1855Z" stroke="currentColor" strokeMiterlimit="10" strokeLinecap="round"></path>
+</svg>
 );

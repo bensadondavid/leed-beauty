@@ -8,7 +8,6 @@ function Home() {
     <>
         <Header />
         <div className="home">
-          <Slider />
         </div>
         <Footer />
     </>
