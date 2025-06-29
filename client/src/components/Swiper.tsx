@@ -14,17 +14,17 @@ export default function Slider() {
         speed={3000}
       >
         <SwiperSlide>
-          <div style={{display : 'flex', justifyContent : 'center', alignItems : 'center', width: '100%', height : "50vh", cursor : 'pointer'}}>
+         <div className='slider-div'>
             Slide 1
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div>
+          <div className='slider-div'>
             Slide 2
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div>
+          <div className='slider-div'>
             Slide 3
           </div>
         </SwiperSlide>
