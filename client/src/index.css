@@ -116,7 +116,6 @@ header{
     justify-content: space-around;
     align-items: center;
     padding: 10px 0;
-    border-bottom: 0.5px solid gray;
 }
 
 .loop-first-row input{
@@ -136,7 +135,7 @@ header{
 .loop-scnd-row{
     height: fit-content;
     width: 100%;
-    padding: 10px 0;
+
 }
 
 .loop-scnd-row ul{
@@ -144,6 +143,12 @@ header{
     display: flex;
     flex-direction: row;
 }
+
+.loop-scnd-row li{
+    padding: 10px;
+}
+
+/* Nav */
 
 nav{
     width: 100%;
@@ -165,7 +170,48 @@ nav ul li:hover{
     border-bottom: 1px solid black;
 }
 
+/* Slider */
+
+.slider{
+    height: 100%;
+    width: 100%;
+}
+
+.slider-div{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.slider-div img{
+    width: 50%;
+    object-fit: contain;
+}
+
+.slider-cta{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255,255 , 255, 0.9);
+    width: 30%;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
 @media(max-width : 768px){
+
+    /* Header */
+
     .left-side{
         flex-direction: row;
         gap: 15px;
@@ -212,10 +258,14 @@ nav ul li:hover{
     .likes{
         display: none;
     }
+
+    /* Nav */
+
     nav{
         width: 100%;
         display: none;
         background-color: #fff;
+        overflow-x: scroll;
     }
     nav.open{
         display: block;
@@ -223,8 +273,29 @@ nav ul li:hover{
     nav ul{
         display: flex;
         flex-direction: row;
-        justify-content: space-around;
         align-items: center;
         width: 100%;
+        overflow-x: scroll;
+        width: max-content; 
+        white-space: nowrap;
+        gap: 10px;
+    }
+    nav ul li{
+        margin: auto 8px;
+    }
+
+    /* Slider */
+
+    .slider-div{
+        flex-direction: row;
+    }
+    .slider-div img{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        object-fit: contain;
+    }
+    .slider-cta{
+       width: 80%;
     }
 }

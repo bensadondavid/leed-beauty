@@ -114,6 +114,12 @@ function Header() {
       </div>
       <nav className={isOpen ? 'open' : ''}>
         <ul>
+           <li>
+            <Link to='/products/'>All</Link>
+          </li>
+          <li>
+            <Link to='/products/new'>New & Bestsellers</Link>
+          </li>
           <li>
             <Link to='/products/face'>Face</Link>
           </li>
