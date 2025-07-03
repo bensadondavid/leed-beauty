@@ -17,7 +17,7 @@ interface Infos{
 function SignIn() {
 
   const navigate = useNavigate()
-  const urlSignIn = import.meta.env.VITE_URL_SIGN_IN || 'http://localhost:3000/signin'
+  const urlSignIn = import.meta.env.VITE_URL_SIGN_IN || 'http://localhost:3000/users'
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
   const [formData, setFormdata] = useState<Infos>({
@@ -61,7 +61,7 @@ function SignIn() {
     }
   catch(error){
     console.log(error);
-    setErrorMessage('Something went wrong');
+    setErrorMessage('Something went wrong, try again');
   }
   }
 
