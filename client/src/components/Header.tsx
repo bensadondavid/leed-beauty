@@ -85,10 +85,10 @@ function Header() {
               <span className="top-bar"></span>
               <span className="bottom-bar"></span>
           </button>
-          <Link to='/signin'><SigninIcon /><span className="sign-in">Sign In</span></Link>
+          <Link to='/signin'><SigninIcon /><span className="sign-in-link">Sign In</span></Link>
         </div>
 
-        <p className="title">LEED BEAUTY</p>
+        <Link to={'/'} className="title">LEED BEAUTY</Link>
 
         <div className="right-side">
           <button className="loop-button" onClick={handleCancel}><LoopIcon /></button>

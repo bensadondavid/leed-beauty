@@ -66,7 +66,7 @@ header{
     gap: 4px;
 }
 
-.sign-in{
+.sign-in-link{
     margin-left: 5px;
 }
 
@@ -208,6 +208,49 @@ nav ul li:hover{
     padding: 20px;
 }
 
+/* Sign In */
+
+.sign-in-title{
+    margin: 10px;
+}
+
+.sign-in-form{
+    height: fit-content;
+    width: 30%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.sign-in-form input{
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid gray;
+    outline: none;
+}
+
+.sign-in-form input::placeholder{
+    color: black;
+}
+
+.sign-in-form button{
+    width: 100%;
+    padding: 10px;
+    background-color: transparent;
+    border : 1px solid gray;
+    border-radius: 4px;
+}
+
+.sign-in-form button:hover{
+    color: #fff;
+    background-color: black;
+    transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
 @media(max-width : 768px){
 
     /* Header */
@@ -216,7 +259,7 @@ nav ul li:hover{
         flex-direction: row;
         gap: 15px;
     }
-    .sign-in{
+    .sign-in-link{
         display: none;
     }
     .hamburger-button {
@@ -297,5 +340,11 @@ nav ul li:hover{
     }
     .slider-cta{
        width: 80%;
+    }
+
+    /* Sign In */
+
+    .sign-in-form{
+        width: 60%;
     }
 }

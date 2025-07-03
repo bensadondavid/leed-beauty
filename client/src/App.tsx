@@ -6,6 +6,7 @@ function App() {
  
   const Home = lazy(()=>import('./pages/Home'))
   const InterfaceAdmin = lazy(()=>import('./pages/InterfaceAdmin'))
+  const SignIn = lazy(()=>import('./pages/SignIn'))
 
   return (
     <>
@@ -14,6 +15,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />}/>
             <Route path="/interface" element={<InterfaceAdmin />}/>
+            <Route path="/interface" element={<InterfaceAdmin />}/>
+            <Route path="/signin" element={<SignIn />}/>
           </Routes>
           </Suspense>
       </BrowserRouter>
