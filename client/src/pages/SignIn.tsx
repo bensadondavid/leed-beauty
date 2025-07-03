@@ -44,7 +44,7 @@ function SignIn() {
     setErrorMessage(null)
     try{
       if(formData.verified_password !== formData.password){
-        alert('Both passwords must be the same')
+        setErrorMessage('Both passwords must be the same')
         return
       }
       const response = await fetch(urlSignIn, {
@@ -55,7 +55,7 @@ function SignIn() {
       if(!response.ok){
         const errorData = await response.json()
         setErrorMessage(errorData.message)
-        throw new Error(errorData.message)
+        return
       }
       navigate('/login')
     }

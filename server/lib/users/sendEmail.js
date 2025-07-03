@@ -1,6 +1,6 @@
 const nodemailer = require("nodemailer");
 
-const sendMail = async(email, subjet, htmlContent)=>{
+const sendMail = async(email, subject, htmlContent)=>{
     try{
         const transporter = nodemailer.createTransport({
         service: "gmail",
@@ -12,7 +12,7 @@ const sendMail = async(email, subjet, htmlContent)=>{
         const info = await transporter.sendMail({
         from: '"LEED BEAUTY" <leedbeautycosmetiques@gmail.com>', // sender address
         to: email, // list of receivers
-        subject: subjet, // Subject line
+        subject: subject, // Subject line
         html: htmlContent
         });
     }
