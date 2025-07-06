@@ -1,5 +1,6 @@
 import { useState } from "react";
-import Header from "../components/Header"
+import { Link } from "react-router-dom";
+import Header from "../../components/Header"
 import { useNavigate } from "react-router-dom";
 
 interface Infos{
@@ -57,7 +58,7 @@ function SignIn() {
         setErrorMessage(errorData.message)
         return
       }
-      navigate('/login')
+      navigate('/useradded')
     }
   catch(error){
     console.log(error);
@@ -81,6 +82,7 @@ function SignIn() {
           <input type="text" name="city" value={formData.city} onChange={handleChange} placeholder="City" required/>
           <button type="submit">Sign In</button>
         </form>
+        <Link to='/login' className="already-account">Already got an account ?</Link>
         {errorMessage && (
         <p style={{ color: 'red', marginTop: '10px', textAlign: 'center' }}>
           {errorMessage}

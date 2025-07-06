@@ -33,15 +33,29 @@ const addUser = async(req, res)=>{
         // Sending a confirmation email
         const verificationLink = `${baseUrl}/verify?token=${emailToken}`
         await sendMail(
-            email,
-            'VERIFICATION OF YOUR EMAIL ADDRESS',
-            `
-            <div style="font-family: Arial, sans-serif; display: flex; flex-direction: column; padding: 20px;">
-                <h1>Hello ${name}</h1>
-                <p>Please click on the link below to verify your email address:</p>
-                <a href="${verificationLink}" style="color: #1a73e8; text-decoration: none;">${verificationLink}</a>
-            </div>
-            `
+        email,
+        'VERIFICATION OF YOUR EMAIL ADDRESS',
+        `
+        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="font-family: Arial, sans-serif;">
+            <tr>
+            <td align="center">
+                <table width="600" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                    <td style="padding: 20px;">
+                    <h1 style="font-size: 24px; margin-bottom: 16px;">Hello ${name}</h1>
+                    <p style="font-size: 16px; margin-bottom: 24px;">
+                        Please click on the link below to verify your email address:
+                    </p>
+                    <a href="${verificationLink}" style="font-size: 16px; color: #1a73e8; text-decoration: none;">
+                        ${verificationLink}
+                    </a>
+                    </td>
+                </tr>
+                </table>
+            </td>
+            </tr>
+        </table>
+        `
         )
         res.status(201).json({message : 'New user added'})
     }

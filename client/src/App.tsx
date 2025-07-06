@@ -6,10 +6,11 @@ function App() {
  
   const Home = lazy(()=>import('./pages/Home'))
   const InterfaceAdmin = lazy(()=>import('./pages/InterfaceAdmin'))
-  const SignIn = lazy(()=>import('./pages/SignIn'))
-  const MailVerify = lazy(()=>import('./pages/MailVerify'))
-  const MailSuccess = lazy(()=>import('./pages/MailSuccess'))
-  const MailError = lazy(()=>import('./pages/MailError'))
+  const SignIn = lazy(()=>import('./pages/users/SignIn'))
+  const MailVerify = lazy(()=>import('./pages/users/MailVerify'))
+  const MailSuccess = lazy(()=>import('./pages/users/MailSuccess'))
+  const MailError = lazy(()=>import('./pages/users/MailError'))
+  const UserAdded = lazy(()=>import('./pages/users/UserAdded'))
 
   return (
     <>
@@ -21,8 +22,9 @@ function App() {
             <Route path="/interface" element={<InterfaceAdmin />}/>
             <Route path="/signin" element={<SignIn />}/>
             <Route path="/verify" element={<MailVerify />}/>
-            <Route path="/success" element={<MailSuccess />}/>
-            <Route path="/error" element={<MailError />}/>
+            <Route path="/emailsuccess" element={<MailSuccess />}/>
+            <Route path="/emailerror" element={<MailError />}/>
+            <Route path="/useradded" element={<UserAdded />}/>
           </Routes>
           </Suspense>
       </BrowserRouter>
