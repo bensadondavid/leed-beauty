@@ -208,14 +208,14 @@ nav ul li:hover{
     padding: 20px;
 }
 
-/* Sign In */
+/* Sign In / Login */
 
-.sign-in-title{
+.sign-in-title, .login-title{
     margin: 50px;
     text-align: center;
 }
 
-.sign-in-form{
+.sign-in-form, .login-form{
     height: fit-content;
     width: 30%;
     margin: auto;
@@ -227,7 +227,14 @@ nav ul li:hover{
     margin-bottom: 15px;
 }
 
-.sign-in-form input{
+.login-form{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.sign-in-form input, .login-form input{
     width: 90%;
     padding: 10px;
     border: none;
@@ -235,11 +242,11 @@ nav ul li:hover{
     outline: none;
 }
 
-.sign-in-form input::placeholder{
+.sign-in-form input::placeholder, .login-form input::placeholder{
     color: black;
 }
 
-.sign-in-form button{
+.sign-in-form button, .login-form button{
     width: 100%;
     padding: 10px;
     background-color: transparent;
@@ -248,7 +255,7 @@ nav ul li:hover{
     margin-top: 20px;
 }
 
-.sign-in-form button:hover{
+.sign-in-form button:hover, .login-form button:hover{
     color: #fff;
     background-color: black;
     transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
@@ -258,6 +265,7 @@ nav ul li:hover{
     display: block;
     text-align: center;
     text-decoration: underline;
+    margin: 20px auto;
 }
 
 /* User added */
@@ -374,10 +382,10 @@ nav ul li:hover{
     }
 
     /* Sign In */
-    .sign-in-title{
+    .sign-in-title, .login-title{
         margin: 20px;
     }
-    .sign-in-form{
+    .sign-in-form, .login-form{
         width: 60%;
     }
 }
