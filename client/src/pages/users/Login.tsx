@@ -15,7 +15,7 @@ function Login() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const url = import.meta.env.LOGIN_URL || 'http://localhost:3000/users/login'
+  const url = import.meta.env.VITE_LOGIN_URL || 'http://localhost:3000/users/login'
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
   const [formData, setFormData] = useState<FormData>({
       mailOrPhone : '',
@@ -45,8 +45,9 @@ function Login() {
         setErrorMessage(data.message)
         return
       }
+      console.log("BACKEND RESPONSE:", data.user)
       dispatch(addUserInfos(data.user))
-      navigate('/')
+      setTimeout(() => navigate('/'), 100)
     }
     catch(error){
       console.log(error);

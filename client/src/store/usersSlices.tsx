@@ -15,24 +15,21 @@ interface User{
     updated_at : string
 }
 
-const initialState : Array<User> = []
+const initialState : User | null = null
 
 const userSlice = createSlice({
     name : 'userSlice',
     initialState : initialState,
     reducers : {
         addUserInfos : (state, action)=>{
-            state.push(action.payload)
-        },
-        removeUser : (state, action)=>{
-            return state.filter(user => user.id !== action.payload.id)
+            return action.payload
         },
         resetUser : ()=>{
-            return []
+            return null
         }
     }
 
 })
 
-export const {addUserInfos, removeUser, resetUser} = userSlice.actions
+export const {addUserInfos, resetUser} = userSlice.actions
 export default userSlice.reducer
