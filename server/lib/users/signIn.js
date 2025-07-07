@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs')
 const crypto = require('crypto')
 const sendMail = require('./sendEmail')
 
-const addUser = async(req, res)=>{
+const signIn = async(req, res)=>{
     const baseUrl = process.env.FRONTEND_URL || 'http://localhost:5173'
     const { name, lastname, email, password, phone, street, zip_code, city } = req.body
     try{
@@ -65,4 +65,4 @@ const addUser = async(req, res)=>{
     }
 }
 
-module.exports = addUser
+module.exports = signIn

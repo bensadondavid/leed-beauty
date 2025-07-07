@@ -1,10 +1,10 @@
 const express = require('express')
 const router = express.Router()
 
-const addUser = require('../lib/users/addUser')
+const signIn = require('../lib/users/signIn')
 const verifyUser = require('../lib/users/verifyUser')
 
-router.post('/', addUser)
+router.post('/signin', signIn)
 router.post('/verify', verifyUser)
 
 module.exports = router 

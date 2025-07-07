@@ -2,6 +2,7 @@
 const express = require('express')
 const app = express()
 const cors = require('cors')
+const cookieParser = require('cookie-parser')
 
 // Import de routes
 const productsRoute = require('./routes/products')
@@ -10,6 +11,7 @@ const userRoute = require('./routes/users')
 // Utilisation de dependances
 app.use(express.json())
 app.use(cors())
+app.use(cookieParser())
 
 // Utilisation des routes
 app.use('/products', productsRoute)

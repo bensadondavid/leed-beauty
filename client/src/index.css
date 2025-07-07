@@ -227,13 +227,6 @@ nav ul li:hover{
     margin-bottom: 15px;
 }
 
-.login-form{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
 .sign-in-form input, .login-form input{
     width: 90%;
     padding: 10px;
