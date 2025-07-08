@@ -45,7 +45,6 @@ function Login() {
         setErrorMessage(data.message)
         return
       }
-      console.log("BACKEND RESPONSE:", data.user)
       dispatch(addUserInfos(data.user))
       setTimeout(() => navigate('/'), 100)
     }
