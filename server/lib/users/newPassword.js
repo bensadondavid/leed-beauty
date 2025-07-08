@@ -5,7 +5,10 @@ const bcrypt = require('bcryptjs')
 const newPassword = async(req, res)=>{
 
     try{
-        const {token, newPassword} = req.body
+        const {token, password} = req.body
+        if (!token || !password) {
+            return res.status(400).json({ message: 'Missing fields' })
+        }
         const result = await pool.query(
             `SELECT * FROM users WHERE reset_password_token = $1`, 
             [token]
@@ -17,12 +20,12 @@ const newPassword = async(req, res)=>{
         if(new Date() > new Date(user.reset_password_expiration)){
             return res.status(400).json({message : 'Expired link'})
         }
-        const hashPassword = await bcrypt.hash(newPassword, 10)
+        const hashPassword = await bcrypt.hash(password, 10)
         await pool.query(
             `UPDATE users
             SET password = $1, reset_password_token = null, reset_password_expiration = null
-            WHERE email = $2`,
-            [hashPassword, user.email]
+            WHERE id = $2`,
+            [hashPassword, user.id]
         )
         res.status(200).json({message : 'Password updated'})
     }

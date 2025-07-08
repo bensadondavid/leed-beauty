@@ -3,7 +3,7 @@ import Header from "../../components/Header"
 
 function ForgotPassword() {
 
-    const url = import.meta.env.RESET_URL || 'http://localhost:3000/users/reset-password'
+    const url = import.meta.env.RESET_URL || 'http://localhost:3000/users/forgot-password'
     const [errorMessage, setErrorMessage] = useState<string | null>(null)
     const [mailOrPhone, setMailOrPhone] = useState<string>('')
 
@@ -36,8 +36,8 @@ function ForgotPassword() {
 
     <>
     <Header />
-      <h1 className="reset-title">Log In</h1>
-      <form className="reset-form" onSubmit={handleSubmit}>
+      <h1 className="forgot-title">Reset your password</h1>
+      <form className="forgot-form" onSubmit={handleSubmit}>
           <input type="text" name="mailOrPhone" value={mailOrPhone} onChange={handleChange} placeholder="E-mail or Phone" required/>
           <button type="submit">Log In</button>
       </form>

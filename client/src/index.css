@@ -210,12 +210,12 @@ nav ul li:hover{
 
 /* Sign In / Login */
 
-.sign-in-title, .login-title{
+.sign-in-title, .login-title, .forgot-title, .reset-title{
     margin: 50px;
     text-align: center;
 }
 
-.sign-in-form, .login-form{
+.sign-in-form, .login-form, .forgot-form, .reset-form{
     height: fit-content;
     width: 30%;
     margin: auto;
@@ -227,7 +227,7 @@ nav ul li:hover{
     margin-bottom: 15px;
 }
 
-.sign-in-form input, .login-form input{
+.sign-in-form input, .login-form input, .forgot-form input, .reset-form input{
     width: 90%;
     padding: 10px;
     border: none;
@@ -235,11 +235,11 @@ nav ul li:hover{
     outline: none;
 }
 
-.sign-in-form input::placeholder, .login-form input::placeholder{
+.sign-in-form input::placeholder, .login-form input::placeholder, .forgot-form input::placeholder, .reset-form input::placeholder{
     color: black;
 }
 
-.sign-in-form button, .login-form button{
+.sign-in-form button, .login-form button, .forgot-form button, .reset-form button{
     width: 100%;
     padding: 10px;
     background-color: transparent;
@@ -248,13 +248,13 @@ nav ul li:hover{
     margin-top: 20px;
 }
 
-.sign-in-form button:hover, .login-form button:hover{
+.sign-in-form button:hover, .login-form button:hover, .forgot-form button:hover, .reset-form button:hover{
     color: #fff;
     background-color: black;
     transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 
-.already-account, .forgot-password{
+.already-account, .forgot-password-link{
     display: block;
     text-align: center;
     text-decoration: underline;

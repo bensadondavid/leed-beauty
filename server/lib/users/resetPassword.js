@@ -6,10 +6,10 @@ const crypto = require('crypto')
 const resetPassword = async(req, res)=>{
     const baseUrl = process.env.FRONTEND_URL || 'http://localhost:5173'
     try{
-        const {email} = req.body
+        const {mailOrPhone} = req.body
         const result = await pool.query(
-            `SELECT * FROM users WHERE email = $1`, 
-            [email]
+            `SELECT * FROM users WHERE email = $1 or phone = $1`, 
+            [mailOrPhone]
         )
         if(result.rows.length === 0){
             return res.status(500).json({message : 'No user found with this E-mail or Phone number'})
@@ -19,12 +19,12 @@ const resetPassword = async(req, res)=>{
         const expiresAt = new Date(Date.now() + 1000 * 60 * 60)
         await pool.query(
             `UPDATE users
-            SET reset_password_token = $1, reset_password_expiration = $2 WHERE email = $3`,
-            [resetPasswordToken, expiresAt, email]
+            SET reset_password_token = $1, reset_password_expiration = $2 WHERE id = $3`,
+            [resetPasswordToken, expiresAt, user.id]
         )
         const resetLink = `${baseUrl}/reset-password?token=${resetPasswordToken}`
         await sendMail(
-            email,
+            user.email,
             'RESET YOUR PASSWORD',
             `
             <table width="100%" cellpadding="0" cellspacing="0" border="0" style="font-family: Arial, sans-serif;">

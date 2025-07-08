@@ -10,7 +10,7 @@ const newPassword = require('../lib/users/newPassword')
 router.post('/sign-in', signIn)
 router.post('/verify-email', verifyUser)
 router.post('/login', logIn)
-router.post('/reset-password', resetPassword)
-router.post('/forgot-password', newPassword)
+router.post('/forgot-password', resetPassword)
+router.post('/reset-password', newPassword)
 
 module.exports = router 

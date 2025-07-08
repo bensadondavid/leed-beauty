@@ -28,8 +28,8 @@ function App() {
             <Route path="/emailerror" element={<MailError />}/>
             <Route path="/useradded" element={<UserAdded />}/>
             <Route path="/login" element={<Login />}/>
-            <Route path="/forgotpassword" element={<ForgotPassword />}/>
-            <Route path="/resetpassword" element={<ResetPassword />}/>
+            <Route path="/forgot-password" element={<ForgotPassword />}/>
+            <Route path="/reset-password" element={<ResetPassword />}/>
           </Routes>
           </Suspense>
       </BrowserRouter>
