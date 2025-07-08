@@ -31,7 +31,7 @@ const signIn = async(req, res)=>{
             [name, lastname, email, emailToken, hashedPassword, phone, street, zip_code, city]
         )
         // Sending a confirmation email
-        const verificationLink = `${baseUrl}/verify?token=${emailToken}`
+        const verificationLink = `${baseUrl}/verify-email?token=${emailToken}`
         await sendMail(
         email,
         'VERIFICATION OF YOUR EMAIL ADDRESS',

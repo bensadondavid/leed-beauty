@@ -5,10 +5,12 @@ const signIn = require('../lib/users/signIn')
 const verifyUser = require('../lib/users/verifyUser')
 const logIn = require('../lib/users/logIn')
 const resetPassword = require('../lib/users/resetPassword')
+const newPassword = require('../lib/users/newPassword')
 
-router.post('/signin', signIn)
-router.post('/verify', verifyUser)
+router.post('/sign-in', signIn)
+router.post('/verify-email', verifyUser)
 router.post('/login', logIn)
-router.post('/reset', resetPassword)
+router.post('/reset-password', resetPassword)
+router.post('/forgot-password', newPassword)
 
 module.exports = router 

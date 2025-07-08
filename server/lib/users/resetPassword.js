@@ -22,7 +22,7 @@ const resetPassword = async(req, res)=>{
             SET reset_password_token = $1, reset_password_expiration = $2 WHERE email = $3`,
             [resetPasswordToken, expiresAt, email]
         )
-        const resetLink = `${baseUrl}/reset?token=${resetPasswordToken}`
+        const resetLink = `${baseUrl}/reset-password?token=${resetPasswordToken}`
         await sendMail(
             email,
             'RESET YOUR PASSWORD',

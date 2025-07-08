@@ -18,7 +18,7 @@ interface Infos{
 function SignIn() {
 
   const navigate = useNavigate()
-  const urlSignIn = import.meta.env.VITE_URL_SIGN_IN || 'http://localhost:3000/users/signin'
+  const urlSignIn = import.meta.env.VITE_URL_SIGN_IN || 'http://localhost:3000/users/sign-in'
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
   const [formData, setFormdata] = useState<Infos>({

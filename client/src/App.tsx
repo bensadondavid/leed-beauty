@@ -12,6 +12,7 @@ function App() {
   const MailError = lazy(()=>import('./pages/users/MailError'))
   const UserAdded = lazy(()=>import('./pages/users/UserAdded'))
   const Login = lazy(()=>import('./pages/users/Login'))
+  const ForgotPassword = lazy(()=>import('./pages/users/ForgotPassword'))
   const ResetPassword = lazy(()=>import('./pages/users/ResetPassword'))
 
   return (
@@ -27,7 +28,8 @@ function App() {
             <Route path="/emailerror" element={<MailError />}/>
             <Route path="/useradded" element={<UserAdded />}/>
             <Route path="/login" element={<Login />}/>
-            <Route path="/reset" element={<ResetPassword />}/>
+            <Route path="/forgotpassword" element={<ForgotPassword />}/>
+            <Route path="/resetpassword" element={<ResetPassword />}/>
           </Routes>
           </Suspense>
       </BrowserRouter>
