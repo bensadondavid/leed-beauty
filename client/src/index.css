@@ -254,7 +254,7 @@ nav ul li:hover{
     transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 
-.already-account{
+.already-account, .forgot-password{
     display: block;
     text-align: center;
     text-decoration: underline;

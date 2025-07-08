@@ -63,6 +63,7 @@ function Login() {
           <input type="password" name="password" value={formData.password} onChange={handleChange} placeholder="Password" required/>
           <button type="submit">Log In</button>
       </form>
+      <a href="/reset" className="forgot-password">Forgot your password ?</a>
       {errorMessage &&(
         <p style={{ color: 'red', marginTop: '10px', textAlign: 'center' }}>
           {errorMessage}
