@@ -4,9 +4,12 @@ import { SigninIcon } from "../assets/signInIcon"
 import { LoopIcon } from "../assets/loopIcon"
 import { HeartIcon } from "../assets/heartIcon"
 import { CartIcon } from "../assets/cartIcon"
+import { useSelector } from "react-redux"
 
 
 function Header() {
+
+  const state = useSelector(state=> state.users)
 
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [loopBtn, setLoopBtn] = useState<boolean>(false)
@@ -85,7 +88,7 @@ function Header() {
               <span className="top-bar"></span>
               <span className="bottom-bar"></span>
           </button>
-          <Link to='/signin'><SigninIcon /><span className="sign-in-link">Sign In</span></Link>
+          <Link to={state !== null ? '/my-account' :'/signin'}><SigninIcon /><span className="sign-in-link">{state !== null ? state.name : 'Sign In'}</span></Link>
         </div>
 
         <Link to={'/'} className="title">LEED BEAUTY</Link>

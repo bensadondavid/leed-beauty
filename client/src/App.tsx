@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import { lazy, Suspense } from "react"
+import { lazy, Suspense, useEffect } from "react"
 import Fallback from "./components/Fallback"
 
 function App() {

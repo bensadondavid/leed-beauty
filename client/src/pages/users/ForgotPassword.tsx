@@ -1,7 +1,13 @@
 import { useState } from "react"
 import Header from "../../components/Header"
+import { useNavigate, useLocation } from 'react-router-dom';
 
 function ForgotPassword() {
+
+    const navigate = useNavigate()
+    const location = useLocation()
+    const params = new URLSearchParams(location.search)
+    const success = params.get('success')
 
     const url = import.meta.env.RESET_URL || 'http://localhost:3000/users/forgot-password'
     const [errorMessage, setErrorMessage] = useState<string | null>(null)
@@ -25,6 +31,7 @@ function ForgotPassword() {
             setErrorMessage(data.message)
             return
           }
+          navigate('/forgot-password?success=true')
         }
         catch(error){
           console.log(error);
@@ -36,16 +43,25 @@ function ForgotPassword() {
 
     <>
     <Header />
-      <h1 className="forgot-title">Reset your password</h1>
-      <form className="forgot-form" onSubmit={handleSubmit}>
-          <input type="text" name="mailOrPhone" value={mailOrPhone} onChange={handleChange} placeholder="E-mail or Phone" required/>
-          <button type="submit">Log In</button>
-      </form>
-      {errorMessage &&(
-        <p style={{ color: 'red', marginTop: '10px', textAlign: 'center' }}>
-          {errorMessage}
-        </p>
-      )}
+    <h1 className="forgot-title">Reset your password</h1>
+    {success ?
+      <h3 style={{ textAlign: 'center', marginTop: '20px' }}>
+        	A reset link has been sent to your email. 
+      </h3>
+      :(
+        <>
+        <form className="forgot-form" onSubmit={handleSubmit}>
+            <input type="text" name="mailOrPhone" value={mailOrPhone} onChange={handleChange} placeholder="E-mail or Phone" required/>
+            <button type="submit">Send an email</button>
+        </form>
+        {errorMessage &&(
+          <p style={{ color: 'red', marginTop: '10px', textAlign: 'center' }}>
+            {errorMessage}
+          </p>
+        )}
+        </>
+      )
+    }
     </>
 
   )

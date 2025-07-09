@@ -20,4 +20,9 @@ app.use(cookieParser())
 app.use('/products', productsRoute)
 app.use('/users', userRoute)
 
+// Account access
+app.get('/me', authMiddleware, (req, res)=>{
+    res.json({user : req.user})
+})
+
 module.exports = { app }
