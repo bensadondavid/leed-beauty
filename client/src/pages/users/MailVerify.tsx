@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react"
 import { useLocation, useNavigate } from "react-router-dom"
-import MailError from "./MailError"
-import MailSuccess from './MailSuccess'
 
 function MailVerify() {
   const location = useLocation()
@@ -11,6 +9,7 @@ function MailVerify() {
   const url = import.meta.env.VITE_URL_VERIFY || 'http://localhost:3000/verify'
 
   const [status, setStatus] = useState<"loading" | "success" | "error">("loading")
+  const [message, setMessage] = useState('')
 
   useEffect(() => {
     if (!token) {
@@ -26,6 +25,8 @@ function MailVerify() {
         })
         if (!response.ok) {
           setStatus("error")
+          const data = await response.json()
+          setMessage(data.message)
           return
         }
         setStatus("success")
@@ -40,8 +41,17 @@ function MailVerify() {
   return (
     <>
       {status === "loading" && <p style={{ textAlign: 'center' }}>Verifying your email...</p>}
-      {status === "success" && <MailSuccess />}
-      {status === "error" && <MailError />}
+      {status === "success" && 
+      <>
+        <h1>Your Email has been verified successfully</h1>
+        <a href="/">Go back to home</a>
+      </>
+      }
+      {status === "error" &&
+      <>
+      <h1>{message}</h1>
+      </>
+      }
     </>
   )
 }

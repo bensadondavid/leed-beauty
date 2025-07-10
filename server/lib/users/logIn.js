@@ -1,11 +1,12 @@
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
 const pool = require('../db')
+const crypto = require('crypto')
 
 
 const logIn = async(req, res)=>{
 
-    const secret = process.env.TOKEN_SECRET || 'ajkedzefjefefefefe'
+    const secret = process.env.JWT_SECRET
     try{
         const {mailOrPhone, password} = req.body
         const result = await pool.query(
@@ -20,12 +21,21 @@ const logIn = async(req, res)=>{
         if(!verifyPassword){
             return res.status(400).json({message : 'Invalid credentials'})
         }
-        const token = jwt.sign({'userId' : String(user.id)}, secret, {expiresIn : '1h'})
-        res.cookie('token', token,{
+        const accessToken = jwt.sign({'userId' : String(user.id)}, secret, {expiresIn : '1h'})
+        const refreshToken = crypto.randomBytes(64).toString('hex')
+        const expiresAt = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000)
+        const userAgent = req.headers['user-agent'] || "unknown"
+        const ipAddress = req.headers['x-forwarded-for']?.split(',')[0] || req.socket.remoteAddress
+        await pool.query(
+            `INSERT INTO refresh_tokens (user_id, token, expires_at, user_agent, ip_address)
+             VALUES($1, $2, $3, $4, $5)`,
+             [user.id, refreshToken, expiresAt, userAgent, ipAddress]
+        )
+        res.cookie('refresh-token', refreshToken,{
             httpOnly : true, 
             sameSite : 'None',
             secure : true,
-            maxAge : 3600000,
+            maxAge : 30 * 24 * 60 * 60 * 1000,
             path : '/'
         }
         )
@@ -40,7 +50,7 @@ const logIn = async(req, res)=>{
             city: user.city
         }
         console.log('connected')
-        res.status(200).json({message : 'Authentication successful', user : safeUser})
+        res.status(200).json({message : 'Authentication successful', user : safeUser, accessToken : accessToken})
     }
     catch(error){
         console.log(error);

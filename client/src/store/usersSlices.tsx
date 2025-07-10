@@ -21,11 +21,13 @@ const userSlice = createSlice({
     name : 'userSlice',
     initialState : initialState,
     reducers : {
-        addUserInfos : (state, action)=>{
-            return action.payload
+        addUserInfos : (state : null | string, action)=>{
+            state.user = action.payload.user
+            state.accessToken = action.payload.accessToken
         },
-        resetUser : ()=>{
-            return null
+        resetUser : (state)=>{
+            state.user = null
+            state.accessToken = null
         }
     }
 
