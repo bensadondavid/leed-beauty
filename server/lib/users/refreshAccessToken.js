@@ -19,8 +19,23 @@ const refreshAccessToken = async(req, res)=>{
         if(new Date(verifyToken.expires_at) < new Date()){
             return res.status(400).json({message : 'Expired token'})
         }
-        const newToken = jwt.sign({userId : verifyToken.user_id}, secret, {expiresIn : "1h"})
-        res.status(200).json({message : 'Access token created', accessToken : newToken})
+         const userResult = await pool.query(
+            `SELECT * FROM users WHERE id = $1`,
+            [verifyToken.user_id]
+        )
+        const user = userResult.rows[0]
+        const accessToken = jwt.sign({userId : verifyToken.user_id}, secret, {expiresIn : "1h"})
+        const safeUser = {
+            id: user.id,
+            name: user.name,
+            lastname: user.lastname,
+            email: user.email,
+            phone: user.phone,
+            street: user.street,
+            zip_code: user.zip_code,
+            city: user.city
+        }
+        res.status(200).json({message : 'Access token created', accessToken : accessToken, user : safeUser})
     }
     catch(error){
         console.log(error);

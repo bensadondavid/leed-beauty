@@ -88,7 +88,7 @@ function Header() {
               <span className="top-bar"></span>
               <span className="bottom-bar"></span>
           </button>
-          <Link to={state !== null ? '/my-account' :'/signin'}><SigninIcon /><span className="sign-in-link">{state !== null ? state.name : 'Sign In'}</span></Link>
+          <Link to={state !== null ? '/my-account' :'/signin'}><SigninIcon /><span className="sign-in-link">{state?.user?.name || 'Sign In'}</span></Link>
         </div>
 
         <Link to={'/'} className="title">LEED BEAUTY</Link>

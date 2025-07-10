@@ -13,6 +13,6 @@ router.post('/verify-email', verifyUser)
 router.post('/login', logIn)
 router.post('/forgot-password', resetPassword)
 router.post('/reset-password', newPassword)
-router.post('/refresh-token', refreshAccessToken)
+router.get('/refresh-token', refreshAccessToken)
 
 module.exports = router 

@@ -1,6 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import { lazy, Suspense } from "react"
+import { lazy, Suspense, useEffect } from 'react';
 import Fallback from "./components/Fallback"
+import { useDispatch, useSelector } from "react-redux";
+import { addUserInfos, resetUser } from "./store/usersSlices";
 
 function App() {
  
@@ -12,6 +14,35 @@ function App() {
   const Login = lazy(()=>import('./pages/users/Login'))
   const ForgotPassword = lazy(()=>import('./pages/users/ForgotPassword'))
   const ResetPassword = lazy(()=>import('./pages/users/ResetPassword'))
+
+  const dispatch = useDispatch()
+  const state = useSelector(state => state.users)
+  const urlBack = import.meta.env.VITE_URL_REFRESH || 'http://localhost:3000/users/refresh-token'
+
+ useEffect(()=>{
+  const fetchToken = async()=>{
+    try{
+      const response = await fetch(urlBack,{
+        method : 'GET',
+        credentials : 'include'
+      })
+      if(!response.ok){
+        dispatch(resetUser())
+        return
+      }
+      const data = await response.json()
+      dispatch(addUserInfos({user : data.user, accessToken : data.accessToken}))
+      }
+      catch(error){
+        console.log(error);
+      }
+    }
+    fetchToken()
+ },[])
+
+ useEffect(()=>{
+  console.log(state)
+ },[state])
 
   return (
     <>
