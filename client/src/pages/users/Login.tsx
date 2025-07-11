@@ -45,7 +45,7 @@ function Login() {
         setErrorMessage(data.message)
         return
       }
-      dispatch(addUserInfos(data.user))
+      dispatch(addUserInfos({user : data.user, accessToken : data.accessToken}))
       setTimeout(() => navigate('/'), 100)
     }
     catch(error){

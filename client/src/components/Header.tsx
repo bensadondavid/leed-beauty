@@ -18,6 +18,7 @@ function Header() {
   const timeRef = useRef<NodeJS.Timeout | null>(null)
   const abortRef = useRef<AbortController | null>(null)
   const urlSearchProduct = import.meta.env.VITE_URL_FETCH_PRODUCTS || 'http://localhost:3000/products'
+  const isAuthenticated = Boolean(state?.user)
 
   const handleSearch = async() =>{
     if(timeRef.current){
@@ -88,7 +89,7 @@ function Header() {
               <span className="top-bar"></span>
               <span className="bottom-bar"></span>
           </button>
-          <Link to={state !== null ? '/my-account' :'/signin'}><SigninIcon /><span className="sign-in-link">{state?.user?.name || 'Sign In'}</span></Link>
+          <Link to={isAuthenticated ? '/my-account' : '/signin'}><SigninIcon /><span className="sign-in-link">{state?.user?.name || 'Sign In'}</span></Link>
         </div>
 
         <Link to={'/'} className="title">LEED BEAUTY</Link>
