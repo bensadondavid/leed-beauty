@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { lazy, Suspense, useEffect } from 'react';
 import Fallback from "./components/Fallback"
 import { useDispatch, useSelector } from "react-redux";
-import { addUserInfos, resetUser } from "./store/usersSlices";
+import { addUserInfos, resetUser } from "./store/usersSlice";
 
 function App() {
  
@@ -39,10 +39,6 @@ function App() {
     }
     fetchToken()
  },[])
-
- useEffect(()=>{
-  console.log(state)
- },[state])
 
   return (
     <>

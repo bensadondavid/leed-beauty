@@ -89,7 +89,7 @@ function Header() {
               <span className="top-bar"></span>
               <span className="bottom-bar"></span>
           </button>
-          <Link to={isAuthenticated ? '/my-account' : '/signin'}><SigninIcon /><span className="sign-in-link">{state?.user?.name || 'Sign In'}</span></Link>
+          <Link to={isAuthenticated ? '/my-account' : '/login'}><SigninIcon /><span className="sign-in-link">{state?.user?.name || 'Log In'}</span></Link>
         </div>
 
         <Link to={'/'} className="title">LEED BEAUTY</Link>

@@ -1,7 +1,7 @@
 import { useState } from "react"
 import Header from "../../components/Header";
 import { useDispatch } from "react-redux";
-import { addUserInfos } from "../../store/usersSlices";
+import { addUserInfos } from "../../store/usersSlice";
 import { useNavigate } from "react-router-dom";
 
 
@@ -63,6 +63,7 @@ function Login() {
           <input type="password" name="password" value={formData.password} onChange={handleChange} placeholder="Password" required/>
           <button type="submit">Log In</button>
       </form>
+      <a href="/signin" className="forgot-password-link">Don't have an account yet ?</a>
       <a href="/forgot-password" className="forgot-password-link">Forgot your password ?</a>
       {errorMessage &&(
         <p style={{ color: 'red', marginTop: '10px', textAlign: 'center' }}>
