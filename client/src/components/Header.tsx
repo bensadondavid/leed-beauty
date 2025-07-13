@@ -95,7 +95,7 @@ function Header() {
               <span className="top-bar"></span>
               <span className="bottom-bar"></span>
             </button>
-            <Link to={isAuthenticated ? '/me' : '/login'}>
+            <Link to={isAuthenticated ? '/me' : '/login'} className="sign-in-block">
               <SigninIcon />
               <span className="sign-in-link">{state?.user?.name || 'Log In'}</span>
             </Link>

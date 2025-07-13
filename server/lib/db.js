@@ -6,6 +6,11 @@ const pool = new Pool({
     ssl: {
     rejectUnauthorized: false,
   },
+  max : 20
 })
+
+pool.on('error', (err) => {
+  console.error('💥  Erreur sur le pool PostgreSQL :', err.code);
+});
 
 module.exports = pool 

@@ -21,6 +21,8 @@ import ErrorBoundary from "./components/ErrorBoundary";
   const Lips = lazy(()=>import('./pages/products/Lips'))
   const Countouring = lazy(()=>import('./pages/products/Countouring'))
   const ErrorPage = lazy(()=>import('./pages/ErrorPage'))
+  const Cart = lazy(()=>import('./pages/orders/Cart'))
+  const Likes = lazy(()=>import('./pages/orders/Likes'))
 
 function App() {
 
@@ -75,6 +77,10 @@ function App() {
               <Route path="/products/eyes" element={<Eyes />}/>
               <Route path="/products/lips" element={<Lips />}/>
               <Route path="/products/countouring" element={<Countouring />}/>
+
+              {/* Orders */}
+              <Route path="/cart" element={<Cart />}/>
+              <Route path="/likes" element={<Likes />}/>
 
             </Routes>
           </ErrorBoundary>

@@ -6,7 +6,7 @@ function ErrorPage() {
     <>
         <Header />
         <div className="error-page">
-            
+            <h1>An Error has occured, <br /> Try again</h1>
         </div>
     </>
   )

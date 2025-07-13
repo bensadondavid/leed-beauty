@@ -66,6 +66,12 @@ header{
     gap: 4px;
 }
 
+.sign-in-block{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .sign-in-link{
     margin-left: 5px;
 }
@@ -79,7 +85,7 @@ header{
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
 }
 
 .right-side .loop-button{
@@ -283,6 +289,21 @@ nav ul li:hover{
     text-decoration: underline;
 }
 
+/* Error Boundary */
+
+.error-boundary{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.error-boundary h1{
+    text-align: center;
+}
+
 @media(max-width : 768px){
 
     /* Header */
@@ -379,3 +400,4 @@ nav ul li:hover{
         width: 60%;
     }
 }
+

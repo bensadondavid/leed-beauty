@@ -12,7 +12,7 @@ export default function Slider() {
         spaceBetween={20}
         slidesPerView={1}
         loop = {true}
-        autoplay={{delay : 3000, disableOnInteraction : false}}
+        autoplay={{delay : 5000, disableOnInteraction : false}}
         speed={1000}
         pagination={{clickable : true}}
       >
@@ -32,8 +32,8 @@ export default function Slider() {
         <SwiperSlide>
           <div className='slider-div'>
             <div className="slider-img">
-              <img src="slider-2.png" loading='lazy'/>
               <img src="slider-3.png" loading='lazy'/>
+              <img src="slider-1.png" loading='lazy'/>
             </div>
               <div className="slider-cta">
                 <h1>THE CLEAR THINKER CLARIFYING SHAMPOO</h1>
